@@ -1,0 +1,61 @@
+
+<!-- 
+HTML (Hyper-Text Makup Language) :
+  - HTML요소: 태그(tag) -<meta>, 속성(attribute):태그옆에 바로 씀. -charset, 컨텐트(content) -charset="UTF-8"
+  - HTML문법: <태그 속성이름="값" 속성이름="값2"> 컨텐트 </태그>
+              <tag attr1="val1" attr2="val2"/>
+  - HTML태그 이름들은 대소문자를 구분하지 않지만, 소문자로만 작성하는 것을 권장.
+  - 태그 속성값을 설정할때는 큰 따옴표("")와 작은 따옴표('')를 모두 사용 가능.
+  - HTML요소(element)
+  (1)block 요소
+    -자동으로 줄바꿈되는 요소. 다른요소의 아래쪽에 배치되는 요소.
+    -width, height 크기를 설정할 수 있는 요소.
+    예) div, h1~h6, ul, li, from, table,....
+    
+  (2)inline 요소: 자동으로 줄바꿈이 되지 않는 요소.다른 요소의 오른쪽에 배치되는 요소.
+    -width, height 크기를 설정 할 수 없는 요소.
+    예) span, a, ...
+    
+  (3)inline-block 요소: 다른요소의 오른쪽에 배치되는 요소, 가로,세로 크기를 설정 할 수 있는 요소.  
+    -img
+ -->
+
+
+<!DOCTYPE html><!-- DTO(document type declartion: 문서타입선언 -->
+<html>
+    <head> <!-- 웹 페이지의 설정: 인코딩, 타이틀, css, javascript,...  -->
+        <meta charset="UTF-8" /> <!-- html인코딩 설정 -->
+        <title>lab01</title> <!-- 브라우저 탭 타이틀 -->
+    </head>
+    <body> <!-- 브라우저 화면에 보여지는 부분 -->
+         <!-- heading tag: h1 ~ h6. 문저 제목. -->
+         <h1>안녕하세요!!!!!!!!</h1>
+         <h2>Hello</h2>
+         <h3>점심시간</h3>
+         
+         <!-- <a>: anchor 링크 -->
+         <a href="https://www.naver.com">네이버</a>
+         <br /> <!-- line break: 줄바꿈 -->
+         <a href='https://www.daum.net'>다음</a>
+         
+         
+         <ul>
+            <li>
+                <a href="section.html">Section Tag</a>
+            </li>
+            <li>
+                <a href="image.html">이미지</a>
+            </li>
+            <li>
+             <a href="list.html">리스트</a>
+            </li>
+            <li>
+                <a href="new.html">복습</a>
+            </li>
+         </ul>
+         
+         
+    </body>
+</html>
+
+
