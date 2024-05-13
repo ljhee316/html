@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>HTML FORM</title>
+	</head>
+	<body>
+    <a href="index.html">인덱스 페이지</a>
+	<h1>폼양식</h1>
+    
+    <!-- 클라이언트(브라우저, 웹)에서 사용자의 입력을 받아서, 입력내용을 서버로 전송하는방법:
+    1. GET방식
+        -클라이언트가 서버로 보낸 양식(form)데이터를 요청 주소(URL)의 질의문자열(query string)에 포함시켜서 전송하는 방식.
+        -예) 검색어 전송
+    2. POST방식
+        -클라이언트가 서버로 보낸 양식 데이터를 요청 주소에 노출 시키지 않고, 요청 패킷의 몸통(body)에 포함시켜서 전송하는 방식.
+        -예) 로그인(아이디,비밀번호전송)
+    3.폼의 기본 전송방식은 GET방식임. method="get" 생략가능함.     
+    
+    URL형식:
+        -프로토콜://서버이름(IP주소):포트번호/경로?질의문자열
+        -예) https://www.google.com(:80 은생략가능)/serach?q=qwer
+        -프로토콜 종류: http, https,... 
+        -서버 IP주소를 직접 사용할 수도 있지만, 일반적으로는 DNS에 등록된 도메인 이름을 사용.
+        -포트번호 80은 생략가능.
+        -요청경로와 질의문자열은 ?로 구분함.
+        -질의문자열은 "파라미터=값&파라미터=값&..." 형식으로 작성. 파라미터 구분은 & 로 함.
+     -->
+    
+    <h2>GET 방식 전송</h2>
+    <form method="get" action="result.html"> <!-- method="전송방식" action="이동할 서버 페이지 주소" -->
+        <input type="text" name="keyword"/>
+        <input type="submit" value="검색"/>
+    </form>
+    
+    <h2>POST 방식 전송</h2> <!-- 주소창에서 아이디,비밀번호사라짐. -->
+    <form method="post" action="result.html">
+        <input type="text" name="id" />
+        <input type="password" name="pwd"/>
+        <input type="submit" value="로그인" />
+    </form>
+    
+    <h2>여러가지 입력 타입</h2>
+    <form action="result.html">
+        <input type="text"  name="id" placeholder="아이디" required /> <!-- placeholder 입력칸에 연한글씨로 보여줌 클릭시 없어짐. require은 입력칸에 입력하라고 알림창뜸.-->
+        <br /> 
+        <input type="password" name="pwd" placeholder="비밀번호" />
+        <br />
+        <input type="number" name="age" placeholder="나이" />
+        <br />
+        <input type="email" name="email" placeholder="이메일" />
+        <br />
+        <input type="date" name="birthday" />
+        <input type="datetime-local" name="createdTime" />
+        <br />
+        <!-- 라디오버튼 -->
+        <input type="radio" name="ad" value="T" id="radio1" />
+        <label for="radio1">수신 허용</label>
+        <input type="radio" name="ad" value="F" id="radio2" checked />
+        <label for="radio2">수신 거부</label>
+        <br />
+        <input type="radio" name="gender" value="m" id="genderRadio1" />
+        <label for="genderRadio1">남성</label>
+        <input type="radio" name="gender" value="f" id="genderRadio2" />
+        <label for="genderRadio2">여성</label>
+        <input type="radio" name="gender" value="u" id="genderRadio3"/>
+        <label for="genderRadio3">알수없음</label>
+        <br />
+        <input type="checkbox" name="hoddy" value="1" id="ch1" />
+        <label for="ch1">영화</label>
+        <input type="checkbox" name="hoddy" value="2" id="ch2" />
+        <label for="ch2">음악</label>
+        <input type="checkbox" name="hoddy" value="3" id="ch3" />
+        <label for="ch3">독서</label>
+        <input type="checkbox" name="hoddy" value="4" id="ch4" />
+        <label for="ch4">코딩</label>
+        <br />
+        <select name="domain">
+            <option value="naver.com">네이버</option>
+            <option value="kakao.com">카카오</option>
+            <option value="google.com">구글</option>
+        </select>
+        <br />
+        <textarea row="" cols="40" name="memo" placeholder="메모"></textarea>    
+        <br />
+        <input type="submit" value="제출" />  <!-- form의 action속성의 설정된 페이지에 요청을 보냄 -->
+        <input type="reset" value="취소" />
+    </form>
+    </body>
+</html>
