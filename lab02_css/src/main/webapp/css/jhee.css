@@ -1,0 +1,28 @@
+@charset "UTF-8";
+#title {
+    color: green;
+    background-color: silver;
+    padding: 30px;
+    display: flex; 
+}
+#key-ul {
+    
+}
+
+.keyword {
+    list-style-type: none;
+    display: inline-block;
+}
+
+.key-title {
+    list-style-type: none;
+}
+.like {
+    background-color: #efefef;
+    color: lightgray;
+    padding: 3px;
+    border: 2px solid #d4d4d4;
+    border-radius: 15px;
+    text-align: center;
+    
+}

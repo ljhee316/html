@@ -18,8 +18,57 @@
               -active: 마우스버튼을 누르고 있을때.
               -nth-child(arg): 조건을 만족하는 자식 요소들을 찾을때.
             */
+                        
+            a#link-naver {
+                color: black;
+                text-decoration:none;
+            }     
             
+            /* 아이디가 link-naver인 a 태그 요소위에 마우스가 위치했을 때*/
+            a#link-naver:hover {
+                color: blue;
+                font-weight: bold;
+            }
             
+            /* 아이디가 link-naver인 a 태그 요소위에 마우스로 왼쪽 버튼으로 클릭하고 있을때 */
+            a#link-naver:active {
+                color: red;
+            }
+            
+            /* */
+            a#link_daum {
+                text-decoration: none;
+                background-color: dodgerblue;
+                color: white;
+                font-weight: bold;
+                padding: 4px 8px; /* top, right, bottom, left*/
+                width: 80px; /*가로크기*/
+                display: inline-block; /* lnline 요소의 크기(가로, 세로)를 변경 하기위해*/
+                text-align: center;      
+            }
+            
+            /*
+              HTML/CSS display 속성(property)
+              1.block: div, main, nav, section, ul, table,...
+               -이전 요소의 아래쪽에 배치.
+               -width, height 변경할 수 있음.
+               -margin, padding을 변경할 수 있음.
+               
+              2.inline: span, a, strong, em, ...
+               -이전 요소의 오른쪽에 배치.
+               -width, height 변경할 수 없음.
+               -margin, padding 변경할 수 있음.
+               
+              3.inline-block : img
+               -inline 배치속성: 이전 요소의 오른쪽에 배치.
+               -block(크기변경) 속성: width,height 변경 할 수 있음.
+               
+              4.none : 화면에 배치하지않음. 요소가 차지하는 크기가 없음.
+            */ 
+            
+            a#link-daum:hover {
+                background-color: slateblue;
+            }
             
         </style>
 	</head>
