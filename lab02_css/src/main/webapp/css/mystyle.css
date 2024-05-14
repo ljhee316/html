@@ -10,7 +10,7 @@ selector {
 
 
 body {
-    background-color: SeaGreen; /* 바탕색 */    
+    background-color: silver; /* 바탕색 */    
 }
 div {
     border: 2px solid white; /*테두리선 두께(width), 스타일(style), 컬러(color)*/
