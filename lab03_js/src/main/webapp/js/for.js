@@ -24,10 +24,11 @@
     
  }
     result.innerHTML += html;
-    result.innerHTML += '<hr />';
+    result.innerHTML += '<hr/>';
     
     
 //break를 사용해서 2단은 2x2까지, 3단은 3x3까지 ... 9단은 9x9단까지 출력
+
 
 html='';
 for (let x = 2; x <10  ; x++) {
