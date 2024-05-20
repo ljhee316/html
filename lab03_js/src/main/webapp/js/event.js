@@ -23,7 +23,6 @@ btninput.addEventListener('click', function(e){
 // 엔터키가 눌렸을 때, input에 입력된 내용을 ul#itemList2의 리스트 아이템으로 추가.
 
 const itemInput2 = document.querySelector('input#itemInput2');
-//console.log(itemInput2);
 itemInput2.addEventListener('keydown', function (e){
     const itemList2 = document.querySelector('ul#itemList2');
     if(e.key ==='Enter') {
@@ -36,12 +35,27 @@ itemInput2.addEventListener('keydown', function (e){
 // TODO: input#username 요소에 'change' 이벤트 리스너를 등록:
 // input에 입력된 내용이 바뀔 때마다 div를 입력 내용으로 덮어씀.
 const username = document.querySelector('input#username');
-//console.log(username);
 username.addEventListener('change', function (e) {
     const output = document.querySelector('div#output');
     output.innerHTML = username.value;
     username.value='';
 });
+
+
+
+//실시간output, enter키 누르면 username빈공백출력(input, keydown)
+//const username = document.querySelector('input#username');
+//username.addEventListener('input', function(e) {
+//	const output = document.querySelector('div#output');
+//	output.innerHTML = username.value;
+//});
+//username.addEventListener('keydown', function(e) {
+//	const output = document.querySelector('div#output');
+//	if(e.key==='Enter'){
+//		output.innerHTML = username.value;
+//		}
+//		username.value = '';
+//});
 
 // TODO: img#bulb 요소에 'mouseenter' 이벤트 리스너를 등록:
 // img의 src를 'images/bulb_on.gif'로 변경.
