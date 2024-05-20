@@ -12,7 +12,7 @@ console.log(arr);
 arr.push(100); //push():원본 배열의 끝에 새로운 원소를 추가, 원본 배열이 바뀜!!!! 객체는그대로!! 주소값(const)은 그대로 원소값만 바뀜.
 console.log(arr); //[1, 2, 3, 100]
 
-let result = arr.concat(200);//원본배열을 변경하지 않고!!!! 원소가 추가된 새로운 배열을 리턴함.
+let result = arr.concat(200);//원본배열을 변경하지 않고!!!! 원소가 추가된 새로운 배열을 리턴함. ->result 값에 따로 저장을 해줘야함.
 console.log(arr); //[1, 2, 3, 100]
 console.log(result); //[1, 2, 3, 100, 200]
 
@@ -80,11 +80,41 @@ result = numbers.map((x) => x * x);
 console.log(result);
 
 //forEach
-numbers.forEach((x) => console.log(x));  //for문을 간단하게.
+result.forEach((x) => console.log(x));  //for문을 간단하게.
 
 
+//reduce 
+//배열 numbers의 모든 원소들의 합계
+console.log(numbers);
+
+let sum = 0;
+for(let value of numbers) {
+    sum += value;
+}
+console.log(`sum = ${sum}`);
+
+//reduce(callback, initiaValue)
+sum = numbers.reduce((acc, cur) => acc + cur, 0);
+console.log(`sum = ${sum}`);
+
+//numbers 의 모든 원소들의 곱:
+let mul = numbers.reduce((acc, cur) => acc * cur, 1);
+console.log(`mul = ${mul}`);
 
 
+// numbers의 원소들 중에서 짝수들의 합
+result = numbers.filter((x) => x % 2 === 0).reduce((acc, cur) => acc + cur, 0);
+console.log(`짝수들의 합: ${result}`);
+
+// numbers의 원소들의 제곱의 합
+result = numbers.map((x) => x * x).reduce((acc, cur) => acc + cur, 0);
+console.log(`제곱의 합 : ${result}`);
+
+// numbers의 원소들 중에서 짝수들의 제곱의 합
+result = numbers.filter((x) => x % 2 === 0)
+        .map((x) => x * x)
+        .reduce((acc, cur) => acc + cur, 0);
+console.log(`짝수들의 제곱의 합: ${result}`);
 
 
  
