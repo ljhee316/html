@@ -22,7 +22,7 @@
                 <input type="text" name="phone" placeholder="전화번호" required />
             </div>   
             <div>
-                <input typr="email" name="email" placeholder="이메일입력" />
+                <input type="email" name="email" placeholder="이메일입력" />
             </div>
             <div>
             <input type="submit" value="저장" />
