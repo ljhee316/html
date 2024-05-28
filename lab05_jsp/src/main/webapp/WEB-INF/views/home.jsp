@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Insert title here</title>
+<title>Lab 5</title>
 <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
     rel="stylesheet"
@@ -14,8 +14,12 @@
     crossorigin="anonymous">
 </head>
 <body>
-
-    <h1 class="bg-primary mt-2 p-5 text-white text-center">TEST</h1>
+    <div class="container-fluid"><!-- 반응형웹을위해 -->
+        <c:set var="pageTitle" value="Home" scope="page" />
+        <%-- pageContext.setAtrribute("pageTitle", "Home") --%>
+    <%@ include file="./fragments/header.jspf" %>
+    
+    </div>
 
     <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
