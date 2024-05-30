@@ -131,6 +131,31 @@ public enum PostDao {
 		return post;
 	}
 	
+	private static final String SQL_UPDATE = "update posts set title = ?, content = ?, modified_time = systimestamp where id = ?";
+	public int update(Post post) {
+		log.debug("update({})", post);
+		log.debug(SQL_UPDATE);
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		int result = 0;
+		
+		try {
+			conn = ds.getConnection();
+			stmt = conn.prepareStatement(SQL_UPDATE);
+			stmt.setString(1, post.getTitle());
+			stmt.setString(2, post.getContent());
+			stmt.setInt(3, post.getId());
+			result = stmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeResources(conn, stmt);
+		}
+		return result;
+	}
+	
 	
 	
 	private Post fromResultSetPost(ResultSet rs) throws SQLException {
@@ -146,7 +171,7 @@ public enum PostDao {
 	}
 	
 	
-	private void closeResources(Connection conn, Statement stmt, ResultSet rs) {
+	public void closeResources(Connection conn, Statement stmt, ResultSet rs) {
 		//DB 자원들을 해제하는 순서: 생성된 순서 반대로.
 		try {
 			if(rs != null) rs.close();
@@ -157,7 +182,7 @@ public enum PostDao {
 		}		
 	}
 	
-	private void closeResources(Connection conn, Statement stme) {
+	public void closeResources(Connection conn, Statement stme) {
 		closeResources(conn, stme, null);
 	}
 

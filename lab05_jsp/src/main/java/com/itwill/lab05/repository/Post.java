@@ -95,7 +95,7 @@ public class Post {
 		private LocalDateTime createdTime; 
 		private LocalDateTime modifiedTime; 
 
-		private PostBuilder() {}
+		private PostBuilder() {};
 		
 		public PostBuilder id(Integer id) {
 			this.id =id;
