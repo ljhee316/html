@@ -28,6 +28,7 @@ public class FrontController extends HttpServlet {
 		 
 		//뷰로 이동
 		request.getRequestDispatcher("/WEB-INF/views/home.jsp").forward(request, response);
+//		request.getRequestDispatcher(request.getContextPath() + "/WEB-INF/views/home.jsp").forward(request, response);
 	}
 
 }

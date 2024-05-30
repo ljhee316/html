@@ -1,7 +1,6 @@
 package com.itwill.lab05.web;
 
 import java.io.IOException;
-import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,27 +14,26 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet (name="postListController",  urlPatterns={"/post/list"})
-public class PostListController  extends HttpServlet{
+@WebServlet (name="postModifyController", urlPatterns = {"/post/modify"})
+public class PostModifyController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	private static final Logger log = LoggerFactory.getLogger(PostListController.class);	
-	
-	//비즈니스계층의 기능(메서드)들을 사용하기위해 선언함.  컨트롤러는 서비스의 계층의 메서드를 사용함!
+	private static Logger log = LoggerFactory.getLogger(PostModifyController.class);
 	private final PostService postService = PostService.INSTANECE;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		log.debug("doGet()");
+		log.debug("goGet()");
+		//query string에 포함된 요청 파라미터 id값을 읽음
+		int id= Integer.parseInt(req.getParameter("id"));
+		log.debug("id");
 		
-		//TODO: DB post테이블에서 전체 검색을 하고, 그 결과를 뷰에 전달.
-		List<Post> list = postService.read();
-		req.setAttribute("posts", list);  //뷰에 전달함
+		//서비스계층의 메서드를 호출해서 수정하기전 객체 읽어오기
+		Post post = postService.read(id);
+				
+		req.setAttribute("post", post);
 		
-		
-		req.getRequestDispatcher("/WEB-INF/views/post/list.jsp").forward(req, resp);
-		
+		req.getRequestDispatcher("/WEB-INF/views/post/modify.jsp").forward(req, resp);
 	}
-	
 
 }

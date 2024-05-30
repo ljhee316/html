@@ -24,7 +24,7 @@ public enum PostDao {
 	private static final Logger log = LoggerFactory.getLogger(PostDao.class);
 	private final HikariDataSource ds = DataSourceUtil.getInstance().getDataSource();//=커넥셔 풀.
 	
-	//select() 메서드에서 실행할 SQL
+	//Posts 테이블에서 모두 읽어오는 SQL
 	private static final String SQL_SELECT_ALL = "select * from posts order by id desc";
 	public  List<Post> select() {
 		log.debug("select()");
