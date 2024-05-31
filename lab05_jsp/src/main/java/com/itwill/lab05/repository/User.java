@@ -64,8 +64,8 @@ public class User {
 		return "User [id=" + id + ", userid=" + userid + ", password=" + password + ", email=" + email + ", points="
 				+ points + "]";
 	}
-	//TODO: builder 패턴
 	
+	//TODO: builder 패턴
 	public static UserBuilder builder() {
 		return new UserBuilder();
 		

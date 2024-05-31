@@ -24,12 +24,13 @@ public class UserSignUpController extends HttpServlet {
 	// TODO: 회원가입에 필요한 요청 처리 메서드
 	// 회원가입 폼 작성하는 뷰로 이동(doGet)
 	
-	  @Override protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException { log.debug("doGet()");
+	  @Override 
+	  protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException { log.debug("doGet()");
 	  	req.getRequestDispatcher("/WEB-INF/views/user/signup.jsp").forward(req,resp);  
 	  }
 
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	  @Override
+	  protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		log.debug("dopost()");
 		// 요청에 포함된 userid, password, email 읽기 (dopost)
 		String userid = req.getParameter("userid");
