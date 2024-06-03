@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 
 import com.itwill.lab05.repository.Post;
 import com.itwill.lab05.repository.PostDao;
+import com.itwill.lab05.repository.User;
+import com.itwill.lab05.repository.UserDao;
 
 //MVC아키텍쳐에서 Service(Business) 계층을 담당하는 클래스
 //영속성(Persistence(=repository)) 계층의 기능을(postDao 를 호출해서) 사용해서 비즈니스 로직을 구현하는 객체.
@@ -15,6 +17,7 @@ public enum PostService {
 	INSTANECE;
 	
 	private static final Logger log = LoggerFactory.getLogger(PostService.class);
+	private final UserDao userDao = UserDao.INSTANCE;
 	
 	//레파지토리계층의 기능들을 사용하기 위해 선언함.
 	private final PostDao postDao = PostDao.INSTANCE;
@@ -32,6 +35,11 @@ public enum PostService {
 		//repository 계층의 메서드를 사용해서 db테이블에 행을 삽입
 		int result = postDao.insert(post);
 		log.debug("insert result={}", result);
+		
+		//UserDao호출하기(포인트 적립) users의 points 컬럼 업데이트.
+		//userid, points 불러오기  --> post get.author == userid
+		userDao.updatePoints(post.getAuthor(), 10);		
+		
 		return result;
 	}
 	

@@ -1,6 +1,7 @@
 package com.itwill.lab05.web;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,6 +39,11 @@ public class UserSignInController extends HttpServlet {
 		
 		//서비스계층 메서드 호출해서 로그인 성공 여부를 판단.
 		User user = userService.signIn(userid, password);
+		
+		//로그인 성공이면 타켓페이지, 그렇지 않으면 다시 로그인 페이지로 이동하기.
+		String target = req.getParameter("target");
+		log.debug("target={}",target);
+		
 		if ( user != null) { //데이터베이스 users 테이블에서 일치하는 사용자 정보가 있는 경우
 			
 			//세션에 로그인 정보(userid나 필요한 정보) 저장. 보여줄 페이지로 이동하기
@@ -45,13 +51,16 @@ public class UserSignInController extends HttpServlet {
 			session.setAttribute("signedInUser", user.getUserid());//setAttribute jsp로 전달역할.
 			
 			//FIXME: 타겟 목적지(URL)로 이동
-			//==>홈페이지로 우선 이동.
-			String target = req.getContextPath() + "/";
-			resp.sendRedirect(target);
+			if(target == null || target.equals("")) { // target이 null이거나 빈 문자열일경우.
+			String url = req.getContextPath() + "/";  //메인홈으로 이동
+			resp.sendRedirect(url);
+			} else {
+				resp.sendRedirect(target);
+			}
 			
 		} else {// db users 테이블에서 일치하는 사용자가 없는 경우
 			//다시 로그인 페이지로 이동
-			 String url = req.getContextPath() + "/user/signin";  //FIXME
+			 String url = req.getContextPath() + "/user/signin?result=f&target=" + URLEncoder.encode(target,"UTF-8");  //FIXME
 			 resp.sendRedirect(url);
 		}		
 	}
