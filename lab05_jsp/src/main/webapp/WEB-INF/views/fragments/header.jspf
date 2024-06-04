@@ -38,7 +38,7 @@
                     </li>
                     <li>
                         <c:url var="myPage" value="/user/mypage" >
-                            <c:param name="userid" value="${ signedInUser }"></c:param>
+                            <c:param name="userid" value="${ signedInUser }"/>
                         </c:url>
                             <a class="nav-link" href="${ myPage }">마이페이지</a> 
                     </li>

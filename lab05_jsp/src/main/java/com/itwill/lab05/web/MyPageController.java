@@ -33,7 +33,6 @@ public class MyPageController extends HttpServlet {
 		User user = userSerive.mypage(userid);
 		req.setAttribute("user", user);  //mypage.jsp에서 ${user.userid} ${user.password} 등 정보를 불러올 변수이름
 		
-		
 		//user/mypage뷰 보이기
 		req.getRequestDispatcher("/WEB-INF/views/user/mypage.jsp").forward(req, resp);
 	}
