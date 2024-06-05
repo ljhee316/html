@@ -17,12 +17,39 @@
     <header>
         <h1>Home</h1>
         <h2>${now}</h2>
+        <!-- img src="./images/paris.jpg" alt="파리"/ -->  
+        <!--src="/spring1/images/paris.jpg" -->
+        <c:url var="paris" value="images/paris.jpg" />  <!-- 상대경로 -->
+        <img alt="파리" src="${paris}" />
+        <!-- <img alt="파리" src="http://localhost:8080/spring1/images/paris.jpg"/> : 절대경로  -->
     </header>
-    
-    <main></main>
+
+    <main>
+        <h1>Contents</h1>
+        <nav>
+            <ul>
+                <li>
+                    <c:url var="exPage" value="/example" /> 
+                    <a href="${exPage}">컨트롤러예제</a>
+                </li>
+                <li>
+                    <c:url var="testPage" value="/test" />
+                    <a href="${testPage}">테스트페이지</a>
+                </li>
+                <li>
+                    <c:url var="forwardPage" value="/test2"/>
+                    <a href="${forwardPage}">포워드</a>                   
+                </li>
+                <li>
+                    <c:url var="redirectPage" value="/test3" />
+                    <a href="${redirectPage}">리다이렉트</a>
+                </li>
+            </ul>
+        </nav>
+    </main>
 
 
-   
+
 
     <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
