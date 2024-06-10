@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.itwill.spring1.dto.UserDto;
 
@@ -48,7 +49,7 @@ public class ExampleController {
 	  // 요청주소가 뷰의 이름이 됨.
 	
 	@GetMapping("/ex1")
-	public void example1(@RequestParam(name="username") String username, @RequestParam(name="age", defaultValue = "0") int age, Model model) {
+	public void example1(@RequestParam(name="username" ) String username, @RequestParam(name="age", defaultValue = "0") int age, Model model) {
 		log.debug("example1(username={}, age={})", username, age);
 		//컨트롤러 메서드 파라미터를 선언할때 @RequestParam 애너테이션을 사용해서
 		//디스패쳐 서블릿이 컨트롤러 메서드를 호출할때,
@@ -62,7 +63,7 @@ public class ExampleController {
 	}
 	
 	@PostMapping("/ex2")
-	public String ex2(@ModelAttribute(name="user") UserDto dto) {
+	public String ex2(@ModelAttribute(name="user" ) UserDto dto) {
 		log.debug("ex2(dto={})", dto);
 		// 디스패쳐 서블릿은 컨트롤러 메서드를 호출하기 위해서
         // UserDto 클래스 기본 생성자를 호출하고, 요청 파라미터 이름으로 setter를 찾아서 호출.
@@ -85,7 +86,7 @@ public class ExampleController {
 		log.debug("forward()");
 		return "forward:/test";
 		//컨트롤러 메서드가 "forward:"으로 시작하는 문자열을 리턴.  ->포워드방식의 이동.
-		//포워드방식의 페이지 이동은 최초요청주소가 바뀌지 않음!
+		//포워드방식의 페이지 이동은 최초요청주소가 바뀌지 않음! 서버내에서 포워드함
 	}
 	
 	@GetMapping("/test3")  //post-redirect-get
@@ -93,9 +94,51 @@ public class ExampleController {
 		log.debug("redirect()");
 		return "redirect:/test";
 		//컨트롤러 메서드가 "redirect:"으로 시작하는 문자열을 리턴.  -> 리다이렉트방식의 이동.
-		//리다이렉트방식의 페이지 이동은 최초요청주소가 리다이렉트되는 주소로 바뀜!!!
+		//리다이렉트방식의 페이지 이동은 최초요청주소가 리다이렉트되는 주소로 바뀜!!!  웹한테 요청보냄.
 	}
 	
+	@GetMapping("/rest1")
+	@ResponseBody  //->컨트롤러 메서드가 리턴하는 값이 뷰를 찾기 위한 문자열이 아니라. 클라이언트로 직접 응답되는 데이터. 응답패킷(response packet)의 몸통(body)에 포함되는 데이터.
+	public String rest1() {
+		log.debug("rest1()");
+		return "Hello 안녕";
+	}
 	
-	
+	@GetMapping("/rest2")
+	@ResponseBody//->리턴값이 클라이언트로 직접 응답되는 객체
+	public UserDto rest2() {
+		log.debug("rest2()");
+		
+		return UserDto.builder().username("길동").age(12).build();//리턴은 객체타입으로.
+		//->rest컨트롤러가 리턴한 가바 객체를 jackson-databind 라이브러리에서 JSON(javascript object notation) 형식의 문자열로 변환하고, 클라이언트로 응답을 보냄.
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
 }
