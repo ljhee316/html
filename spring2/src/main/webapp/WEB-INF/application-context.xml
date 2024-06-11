@@ -29,7 +29,7 @@
          데이터소스를 이용해서 SQL문장을 실행하고, 그결과를 처리해서 리턴할수 있는 객체. -->
          <bean id="session" class="org.mybatis.spring.SqlSessionFactoryBean">
             <property name="dataSource" ref="ds" />
-            <property name="mapperLocations" value="classpath:/mappers/**/*.xml" /> <!-- mapperLocations : Mapper 를 스캔하기 위한 XML 파일 경로 지정 -->
+            <property name="mapperLocations" value="classpath:/mappers/**/*.xml" /> <!-- mapperLocations : Mapper 를 스캔하기 위한 XML 파일 경로 지정   classpath=src/main.java또는resource-->
             <property name="configLocation" value="classpath:mybatis-config.xml" />  <!-- configLocation : mybatis 설정파일이 위치한 경로를 지정 -->
          </bean>
          
@@ -37,5 +37,10 @@
               base-package와 그 하위 패키지에 있는 인터페이스들을 구현한 객체를 생성해줌.
           -->
          <mybatis:scan base-package="com.itwill.spring2.repository" />
+         
+         <!-- 스프링컨테이너에서 컴포넌트 빈(예: @Service, @Component, ...)들을 검색할 기본 패키지를 설정.
+              스프링컨테이너가 설정된 패키지와 그 하위 패키지를 검색해서 컴포넌트 애너테이션이 선언된 클래스의 객체를 생성하고 관리.
+              필요한곳에 의존성을 주입해줌. -->
+         <context:component-scan base-package="com.itwill.spring2.service" />
 
 </beans>
