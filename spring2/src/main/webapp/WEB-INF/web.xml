@@ -5,8 +5,15 @@
     id="WebApp_ID" version="6.0">
     <display-name>spring2</display-name>
     
+    <!-- Listener 설정 -->
+    <!-- 스프링 프레임워크의 컨텍스트 로더 리스너 설정 : WAS구동시에 web.xml을 읽어들여 웹 어플리케이션 설정을 구성하기 위한 초기셋팅작업을 해주는 역할
+    WAS에서 contextloaded이벤트가 발생했을때, 컨텍스트 파라미터들 중에서 contextConfiguration 파라미터에  설정된 application-context.xml 파일을 읽음-> 객체생성함. -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    
     <!--  Context Parameter(WAS의 환경 설정 변수) -->
-    <!--  스프링 컨텍스트를 저장한 파일 위치를 설정. ContextLoaderListener가 사용하는 xml -->
+    <!--  스프링 컨텍스트를 저장한 파일 위치를 알려주는 설정. ContextLoaderListener가 사용하는 xml -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>/WEB-INF/application-context.xml</param-value>
@@ -26,13 +33,6 @@
         <filter-name>encodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-    
-    <!-- Listener 설정 -->
-    <!-- 스프링 프레임워크의 컨텍스트 로더 리스너 설정 : 
-    WAS에서 contextloaded이벤트가 발생했을때, 컨텍스트 파라미터들 중에서 contextConfiguration 파라미터에  설정된 application-context.xml 파일을 읽음-> 객체생성함. -->
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
     
     <!-- Servlet 설정 -->
     <!-- 스프링 프레임워크에서 제공하는 디스패쳐 서블릿 설정 -->

@@ -15,38 +15,57 @@
         <c:set var="pageTitle" value="Post List"/>
         <%@ include file="../fragments/header.jspf" %>
     </div>
-    <div class="card">
-        <div class="mt-2 card-header text-center">
-            <h2>Post List</h2>
-        </div>
-        <div class="mt-2 card-body">
-            <table class="table table-hover text-center">
-                <thead>
-                    <tr>
-                        <th>번호</th>
-                        <th>제목</th>
-                        <th>작성자</th>
-                        <th>수정시간</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <c:forEach items="${post}" var="p">
+    <main>
+        <div class="card">
+            <div class="mt-2 card-header text-center">
+                <c:url var="postSearchPage" value="/post/search"/>
+                <form method="get" action="${postSearchPage}">
+                    <div class="row"> <!-- 비율로 분할(기본 12개컬럼으로 이루어져있음.) -->
+                        <div class="col-3">
+                            <select class="form-control" name="category">
+                                <option value="t">제목</option>
+                                <option value="c">내용</option>
+                                <option value="tc">제목+내용</option>
+                                <option value="a">작성자</option>
+                            </select>
+                        </div>
+                        <div class="col-7">
+                            <input class="form-control" type="text" name="keyword" placeholder="검색어입력" required />
+                        </div>    
+                        <div class="col-2">
+                            <input type="submit" class="form-control btn btn-outline-secondary" value="검색" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="mt-2 card-body">
+                <table class="table table-hover text-center">
+                    <thead>
                         <tr>
-                            <td>${p.id}</td>
-                            <td>
-                                <c:url var="postDetailsPage" value="/post/details">
-                                    <c:param name="id" value="${p.id}"></c:param>
-                                </c:url>
-                                <a href="${postDetailsPage}">${p.title}</a>
-                            </td>
-                            <td>${p.author}</td>
-                            <td>${p.modifiedTime}</td>
+                            <th>번호</th>
+                            <th>제목</th>
+                            <th>작성자</th>
+                            <th>수정시간</th>
                         </tr>
-                    </c:forEach>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <c:forEach items="${posts}" var="p">
+                            <tr>
+                                <td>${p.id}</td>
+                                <td><c:url var="postDetailsPage" value="/post/details">
+                                        <c:param name="id" value="${p.id}"></c:param>
+                                    </c:url> 
+                                    <a href="${postDetailsPage}">${p.title}</a>
+                                </td>
+                                <td>${p.author}</td>
+                                <td>${p.modifiedTime}</td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
+    </main>
     
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
         crossorigin="anonymous"></script>

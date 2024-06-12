@@ -12,7 +12,7 @@
 </head>
 <body>
     <div>
-        <c:set var="pageTitle" value="상세보기" />
+        <c:set var="pageTitle" value="Post Details" />
         <%@ include file="../fragments/header.jspf" %>     
     </div>
     
@@ -49,14 +49,14 @@
                         </div>                    
                     </form>    
                 </div>
-                <c:if test="${post.author eq signedInUser}">
+
                     <div class="card-footer">
                         <c:url var="postModifyPage" value="/post/modify">
                             <c:param name="id" value="${post.id}" />
                         </c:url>
                         <a class="btn btn-outline-primary" href="${postModifyPage}">수정하기</a>
                     </div>
-                </c:if>
+
             </div>
         </main>
     </div>
