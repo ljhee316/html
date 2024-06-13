@@ -12,6 +12,7 @@
     <!--  mapper.xml 파일에서 resultType속성을 설정할때 간단히 하기위해서 설정함. -->
     <typeAliases>
         <typeAlias type="com.itwill.spring2.repository.Post" alias="Post" />
+        <typeAlias type="com.itwill.spring2.repository.Comment" alias="Comment" />
     </typeAliases>
 
 </configuration>

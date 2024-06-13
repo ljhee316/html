@@ -32,7 +32,7 @@
     
     <!-- post 테이블에서 제목,내용,작성자로 검색 -->
     <select id="search" resultType="Post">
-        <bind name="searchKeyword" value="'%' + keyword + '%'" />
+        <bind name="searchKeyword" value="'%' + keyword + '%'" /><!-- "'%' + keyword + '%'"   keyword 변수이름? -->
             select * from posts
             <where>
                 <choose>
@@ -54,5 +54,5 @@
             </where>
             order by id desc       
     </select>
-    
+        
   </mapper>
