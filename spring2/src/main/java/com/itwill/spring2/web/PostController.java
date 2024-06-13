@@ -40,7 +40,7 @@ public class PostController {
 	
 	@GetMapping({"/details", "modify"})  //get방식 details와modify 2개의 요청을 처리하는 메서드 -> 같은기능이라 가능.
 	public void details(Model model, @RequestParam(name="id") int id) {
-		log.debug("details()");	
+		log.debug("details({})", id);	
 		
 		//id로 테이블에서 내용 불러오고 뷰에 전달.
 		Post post = postService.readByID(id);
@@ -98,8 +98,11 @@ public class PostController {
 	
 	@GetMapping("/search")
 	public String search (Model model, PostSearchDto dto) {
-		log.debug("serach=()");
-		postService.search(dto);
-		return "/list";
+        log.debug("search({})", dto);
+        
+        List<PostListDto> list = postService.search(dto);
+        model.addAttribute("posts", list);
+        
+        return "post/list";
 	}
 }

@@ -48,39 +48,39 @@ public class PostService {
 	
 	
 	public Post readByID(int id) {
-		log.debug("readByID()", id);
+		log.debug("readByID({})", id);
 		Post post =postDao.selectByID(id);
 		
 		return post;
 	}
 	
 	public int create(PostCreateDto dto) {
-		log.debug("create()", dto);
-		int result = postDao.insertPost(dto.toEntity());//PostCreateDto 에서 만
+		log.debug("create({})", dto);
+		int result = postDao.insertPost(dto.toEntity());//PostCreateDto 에서 만듬.
 		log.debug("insert결과={}", result);
 		return result;		
 	}
 	
 	public int update(PostUpdateDto dto) {
-		log.debug("update()");
+		log.debug("update({})",dto);
 		int result = postDao.updatePost(dto.toEntity());
 		return result;
 	}
 	
 	public int delete(int id) {
-		log.debug("delete(id={})", id);
+		log.debug("delete(id=({})", id);
 		//리포지토리메서드를 호출해서 delete쿼리 실행.
 		int result = postDao.deletePost(id);
-		log.debug("delete결과={}", result);
+		log.debug("delete결과=({})", result);
 		
 		return result;
 	}
 	
-	public List<PostSearchDto> search(PostSearchDto dto) {
-		log.debug("search()");
+	public List<PostListDto> search(PostSearchDto dto) {
+		log.debug("search({})",dto);
 		
 		List<Post> list = postDao.search(dto);
-		return list.stream().map(PostSearchDto::toEntity).toList();
+		return list.stream().map(PostListDto::fromEntity).toList();
 	}
 	
 
