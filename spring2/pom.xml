@@ -135,6 +135,13 @@
             <artifactId>jackson-databind</artifactId>
             <version>${jackson-version}</version>
         </dependency>
+        
+        <!-- Add-on module to support JSR-310 (Java 8 Date & Time API) data types  =>LocalDate, LocalDateTime)을 JSON으로 변환하기 위해 -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>${jackson-version}</version>
+        </dependency>
 
         <!-- Spice up your java: Automatic Resource Management, automatic generation of getters, setters, equals, hashCode and toString, and more! (+++ 이클립스 플러그인추가해줘야함)-->
         <dependency>
