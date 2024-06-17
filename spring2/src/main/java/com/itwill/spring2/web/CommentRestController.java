@@ -27,7 +27,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/api/comment")// CommentController 클래스의 모든 컨트롤러 메서드의 매핑주소는 /api/commnet로 시작함.
 public class CommentRestController {
 	
-	@Autowired
+	
 	private final CommentService commentService;
 	
 	
@@ -78,8 +78,8 @@ public class CommentRestController {
     }
     
     @PutMapping("/{id}")//댓글내용수정
-    public ResponseEntity<Integer> updateComment(@RequestBody CommentUpdateDto dto) {
-    	log.debug("CommentUpdateDto=({})",dto);
+    public ResponseEntity<Integer> updateComment(@PathVariable int id, @RequestBody CommentUpdateDto dto) {
+    	log.debug("updateComment(id={}, dto={})",id, dto);
     	int result = commentService.update(dto);
     	
     	return ResponseEntity.ok(result);
