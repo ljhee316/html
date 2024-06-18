@@ -79,7 +79,9 @@ public class CommentRestController {
     
     @PutMapping("/{id}")//댓글내용수정
     public ResponseEntity<Integer> updateComment(@PathVariable int id, @RequestBody CommentUpdateDto dto) {
-    	log.debug("updateComment(id={}, dto={})",id, dto);
+    	log.debug("updateComment(id={}, dto={})", id, dto);
+    	
+    	dto.setId(id);   //commets.js에서 updateComment함수.   dto.id= null이기때문에 pathvariable id로 setter해줌.
     	int result = commentService.update(dto);
     	
     	return ResponseEntity.ok(result);

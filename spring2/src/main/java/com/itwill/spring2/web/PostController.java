@@ -81,7 +81,7 @@ public class PostController {
 //	}
 	
 	
-	@GetMapping("/delete")
+	@GetMapping("/delete")   //관련postid에서 댓글들을 먼저 삭제하고, post를 삭제하기.
 	public String delete(@RequestParam(name="id") int id) {
 		log.debug("delete(id={})", id);
 		//서비스 컴포넌트의 메서드를 호출해서 db에서 해당 아이디의 글을 삭제.

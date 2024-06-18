@@ -26,6 +26,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     
+    //부트스크랩 모달(다이얼로그) 객체 생성.
+    const commentModal = new bootstrap.Modal('div#commentModal', {backdrop: true});
+    
+    //모달의 저장 버튼을 찾고 클릭이벤트 리스너를 설정.
+    const btnUpdateComment = document.querySelector('button#btnUpdateComment');
+    btnUpdateComment.addEventListener('click', updateComment);
+    
+    
+    
+    /*----------------------------아래는 함수들-------------------------------------------------------*/
+    
     //등록버튼 btnRegisterComment 요소를 찾기.
     const btnRegisterComment = document.querySelector('button#btnRegisterComment');
     
@@ -126,11 +137,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div>
                     <button class="btnDeleteComment btn btn-outline-danger btn-sm"
                             data-id="${comment.id}">삭제</button>
-                    <button class="modifiedComment btn btn-outline-primary btn-sm"
-                            data-id="${comment.id}">수정</button>
+                    <button class="modifyComment btn btn-outline-primary btn-sm"
+                            data-id="${comment.id}">수정</button>              
                 </div>
             </div>
-            `;  //id부여하지않은이유: 갯수가 확실치 않아서. 각각 따로가 아닌 한꺼번에 찾기위해  class만 선언함.  
+            `;  //id부여하지않은이유: 갯수가 확실치 않아서. 각각 따로가 아닌 한꺼번에 찾기위해  class만 선언함. data-id: 커스텀태그속성. 
         }
         //작성된 HTML코드를 div영역에 삽입함.
         divComments.innerHTML = htmlStr;
@@ -142,18 +153,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     
         //모든 수정버튼찾아서 클릭이벤트리스너 설정.
-        const btnModifieds = document.querySelectorAll('button.modifiedComment');
-        for(let btn of btnModifieds) {
-            btn.addEventListener('click', (e) => {
-                alert(e.target.getAttribute('data-id'));
-            });
+        const btnModifies = document.querySelectorAll('button.modifyComment');
+        for(let btn of btnModifies) {
+            btn.addEventListener('click', showCommentModal);
         }
     }
     
     function deleteComment(event) {
         //이벤트리스너 콜백의 아규먼트 event객체는 target(이벤트가 발생한 요소) 속성을 가지고 있음.  target:button.btnDeleteComment.btn.btn-outline-danger.btn-sm
         console.log(event.target);
-        const id = event.target.getAttribute('data-id');  //HTML 요소의 속성값 찾기. --> data-id 삭제할 아이디번호찾음.
+        const id = event.target.getAttribute('data-id');  //HTML 요소의 속성값 찾기. --> data-id(커스텀태그속성. 대쉬로 표현) 삭제할 아이디번호찾음.
         
         //삭제여부확인
         const result = confirm('댓글을 정말 삭제할까요?');
@@ -179,7 +188,54 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
+    function showCommentModal(event) { 
+        //이벤트 타겟(수정버튼)의 data-id 속성값을 읽기
+        const id = event.target.getAttribute('data-id');
+        //Ajax요청을 보내서 댓글 아이디로 검색하기
+        const uri = `../api/comment/${id}`;
+        axios
+        .get(uri)
+        .then((response) => {
+            console.log(response.data);  //response 는 data(객체) 속성을 항상 가지고있음.
+            //const commnetId = response.data.id;
+            //모달의 댓글번호, 댓글내용찾아서 value 채우기
+            id = document.querySelector('input#modalCommentId').value;
+            response.data.ctext = document.querySelector('textarea#modalCommentText').value;
+        })
+        .catch((error) => console.log(error));
+    }
     
+    //댓글 업데이트 모달의 저장 버튼의 클릭 이벤트 리스너
+    function updateComment() {
+        //업데이트할 id변경
+        const id = document.querySelector('input#modalCommentId').value;
+        
+        //업데이트할 댓글내용변경
+        const ctext = document.querySelector('textarea#modalCommentText').value;
+        if(ctext ==='') {
+            alert('업데이트 할 내용을 입력하세요.')
+            retrun; //이벤트리스너종료
+        }
+        
+        //댓글 업데이트 요청 uri
+        const uri = `../api/comment/${id}`;
+        
+        //Ajax요청보내기
+        axios
+        .put(uri, {ctext})    // {ctext} = {ctext : ctext}
+        .then((response)=>{
+            console.log(response);
+            
+            //댓글목록 갱신
+            getAllComments();
+            
+            //모달(다이얼로그) 숨기기
+            commentModal.hide();
+            
+        })
+        .catch((error)=> console.log(error));
+        
+    }
     
     
     
