@@ -63,8 +63,7 @@
         <div class="mt-2 card">
             <div class="card-header d-inline-flex gap-1">
                 <!-- 댓글접기, 펄치기 기능 버튼  -->
-                <button class="btn btn-secondary" id="btnToggleComment">댓글
-                    보기</button>
+                <button class="btn btn-secondary" id="btnToggleComment">댓글 보기</button>
             </div>
 
             <!-- 댓글 토글버튼에 의해서 댓글 접기 혹윽 펄치기를 할 영역 -->

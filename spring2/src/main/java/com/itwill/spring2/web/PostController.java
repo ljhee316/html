@@ -43,7 +43,7 @@ public class PostController {
 		log.debug("details({})", id);	
 		
 		//id로 테이블에서 내용 불러오고 뷰에 전달.
-		Post post = postService.readByID(id);
+		Post post = postService.read(id);
 		model.addAttribute("post", post);
 		
 		// 리턴 타입이 void이므로 뷰의 이름은

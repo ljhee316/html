@@ -47,7 +47,7 @@ public class PostService {
 	}
 	
 	
-	public Post readByID(int id) {
+	public Post read(Integer id) {
 		log.debug("readByID({})", id);
 		Post post =postDao.selectByID(id);
 		
