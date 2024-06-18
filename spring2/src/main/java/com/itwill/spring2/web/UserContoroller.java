@@ -16,6 +16,8 @@ public class UserContoroller {
 		log.debug("GET signup()");
 	}
 	
+    // TODO: 사용자 아이디 중복체크 REST 컨트롤러
+	
 	
 	
 	
