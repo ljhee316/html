@@ -35,11 +35,11 @@ public class PostDaoTest {
 	
 //	@Test
 	public void testSelectById() {
-		Post post1 = postDao.selectByID(4);  //db에 데이터가존재할때
+		Post post1 = postDao.selectById(4);  //db에 데이터가존재할때
 		Assertions.assertNotNull(post1);
 		log.debug(post1.toString());
 		
-		Post post2 = postDao.selectByID(5); //db에 데이터가 없는경우
+		Post post2 = postDao.selectById(5); //db에 데이터가 없는경우
 		Assertions.assertNull(post2);
 	}
 	

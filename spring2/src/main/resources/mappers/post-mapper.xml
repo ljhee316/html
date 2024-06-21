@@ -11,7 +11,7 @@
     </select>
     
     <!-- Post테이블에서 id(PK)로 검색-상세보기 -->
-    <select id="selectByID" resultType="Post">
+    <select id="selectById" resultType="Post">
         select * from posts where id = #{id}     
     </select>
     

@@ -26,4 +26,25 @@
     <url-pattern>/post/update</url-pattern>
     <url-pattern>/post/delete</url-pattern>
   </filter-mapping>
+  
+  
+  
+  
+  
+  <servlet>
+        <servlet-name>jsp</servlet-name>
+        <jsp-file>/index.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>jsp</servlet-name>
+        <url-pattern>/index.jsp</url-pattern>
+    </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+  
+  
+  
+  
+  
 </web-app>

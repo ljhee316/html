@@ -9,7 +9,7 @@ public interface PostDao {
 	//post-mapper.xml 에서 id="selectOrderByIdDesc"인 SQL을 실행하는 메서드.
 	List<Post> selectOrderByIdDesc();
 	
-	Post selectByID(Integer id);	
+	Post selectById(Integer id);	
 	int insertPost(Post post);
 	int updatePost(Post post);
 	int deletePost(Integer id);
