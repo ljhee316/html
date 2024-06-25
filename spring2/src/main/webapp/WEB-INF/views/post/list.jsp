@@ -14,7 +14,6 @@
     <div class="container-fluid">
         <c:set var="pageTitle" value="Post List"/>
         <%@ include file="../fragments/header.jspf" %>
-    </div>
     <main>
         <div class="card">
             <div class="mt-2 card-header text-center">
@@ -64,6 +63,7 @@
                     </tbody>
                 </table>
             </div>
+        </div>
         </div>
     </main>
     
